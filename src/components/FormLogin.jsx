@@ -24,20 +24,16 @@ class FormLogin extends React.Component {
     }
   }
 
-  inputs() {
-    return (
-      loginRequirements.map((inputData) => (
-        <CustomInput inputData={inputData} />
-    ))
-    );
-  }
-
   render() {
     return (
       <div>
         <h1>Faça login para jogar</h1>
         <form>
-          {this.inputs()}
+          {
+            loginRequirements.map((inputData) => (
+              <CustomInput inputData={inputData} key={inputData.name} />
+          ))
+          }
         </form>
         <button data-testid="btn-play" disabled={this.state.Disabled} >
           Jogar!!

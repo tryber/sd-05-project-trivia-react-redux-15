@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 class CustomInput extends React.Component {
   render() {
-    console.log(this.props)
     const { name, dataTestId, value, type, onChange } = this.props.inputData;
     return (
       <input
