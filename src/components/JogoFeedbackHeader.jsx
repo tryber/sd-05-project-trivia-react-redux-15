@@ -7,28 +7,30 @@ class JogoFeedbackHeader extends React.Component {
     const { image, name, score } = this.props;
     return (
       <div>
-        <img  
-          src={image} 
-          alt="player photo"
-          data-testid="header-profile-picture" 
+        <img
+          src={image}
+          alt="player"
+          data-testid="header-profile-picture"
         />
         <h1 data-testid="header-player-name">{name}</h1>
         <h1 data-testid="header-score">Pontuação: {score}</h1>
       </div>
-    )
+    );
   }
 }
+
+// Dependendo do formato do state da store, deve-se especificar o reducer na funcao mapStateToProps
 
 const mapStateToProps = (state) => ({
   image: state.player.image,
   name: state.player.name,
   score: state.player.score,
-})
+});
 
-JogoFeedbackHeader.PropTypes = {
-  image: PropTypes.string,
-  name: PropTypes.string,
-  score: PropTypes.string,
-}
+JogoFeedbackHeader.propTypes = {
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  score: PropTypes.string.isRequired,
+};
 
 export default connect(mapStateToProps)(JogoFeedbackHeader);
