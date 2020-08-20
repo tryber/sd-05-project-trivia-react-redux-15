@@ -19,7 +19,7 @@ class FormLogin extends React.Component {
     const { name, value } = target;
     const { Nome, Email } = this.state;
     this.setState(() => ({ [name]: value }));
-    if(Nome !== '' && Email !== '') {
+    if (Nome !== '' && Email !== '') {
       this.setState({ Disabled: false });
     }
   }
