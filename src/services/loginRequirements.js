@@ -8,7 +8,7 @@ const loginfo = [
     name: 'Email',
     type: 'email',
     dataTestId: 'input-gravatar-email',
-  }
+  },
 ];
 
 export default loginfo;

@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class CustomInput extends React.Component {
   render() {
-    const { name, dataTestId, value, type, onChange } = this.props;
+    console.log(this.props)
+    const { name, dataTestId, value, type, onChange } = this.props.inputData;
     return (
       <input
         type={type}
@@ -16,4 +18,14 @@ class CustomInput extends React.Component {
     );
   }
 }
+
+CustomInput.propTypes = {
+  inputData: PropTypes.shape({
+    name: PropTypes.string,
+    dataTestId: PropTypes.string,
+    value: PropTypes.string,
+    type: PropTypes.string,
+    onChange: PropTypes.func,
+  }).isRequired,
+};
 export default CustomInput;
