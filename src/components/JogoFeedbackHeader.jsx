@@ -22,9 +22,9 @@ class JogoFeedbackHeader extends React.Component {
 // Dependendo do formato do state da store, deve-se especificar o reducer na funcao mapStateToProps
 
 const mapStateToProps = (state) => ({
-  image: state.player.image,
-  name: state.player.name,
-  score: state.player.score,
+  image: state.reducer.player.image,
+  name: state.reducer.player.name,
+  score: state.reducer.player.score,
 });
 
 JogoFeedbackHeader.propTypes = {
