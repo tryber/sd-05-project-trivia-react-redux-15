@@ -10,8 +10,8 @@ class Feedback extends React.Component {
     return (
       <div>
         {/* importar o header */}
-        <div data-testid="feedback-total-score">PLACAR FINAL: {placar}</div>
-        <div data-testid="feedback-total-question">Você acertou: {acertos}</div>
+        <div data-testid="feedback-total-score">PLACAR FINAL: {/* {placar} */}</div>
+        <div data-testid="feedback-total-question">Você acertou: {/* {acertos} */}</div>
         <div data-testid="feedback-text">
           {acertos < 3 ? <h2>Podia ser melhor...</h2> : <h2>Mandou bem!</h2>}
         </div>
@@ -35,9 +35,9 @@ class Feedback extends React.Component {
 //   placar: state.reducerVirginia.score,
 // })
 
-export default connect(null)(Feedback);
+// export default connect(null)(Feedback);
 
-Feedback.propTypes = {
-  acertos: propTypes,
-  placar: propTypes,
-};
+// Feedback.propTypes = {
+//   acertos: propTypes,
+//   placar: propTypes,
+// };
