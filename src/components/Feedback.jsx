@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import propTypes from 'prop-types';
+// import { connect } from 'react-redux';
+// import propTypes from 'prop-types';
 
 class Feedback extends React.Component {
   render() {
@@ -41,3 +41,5 @@ class Feedback extends React.Component {
 //   acertos: propTypes,
 //   placar: propTypes,
 // };
+
+export default Feedback;
