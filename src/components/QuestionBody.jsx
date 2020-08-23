@@ -53,6 +53,12 @@ class QuestionBody extends React.Component {
         button.setAttribute("class", "correctAnswer")
       } else { button.setAttribute("class", "wrongAnswer") }
     });
+    const nextButton = document.createElement("button")
+    nextButton.innerHTML = "Próxima"
+    nextButton.setAttribute("trype", "button")
+    nextButton.setAttribute("data-testid", "btn-next")
+    nextButton.addEventListener("click", () => {return this.setState({ index: this.state.index + 1 })}) 
+    document.getElementById("question-div").appendChild(nextButton)
   }
   
   nextQuestion(){
@@ -89,7 +95,7 @@ class QuestionBody extends React.Component {
       <div>
         <h2 data-testid="question-category">Categoria: {pergunta.category}</h2> 
         <h2 data-testid="question-text">{pergunta.question}</h2>
-        <div>
+        <div id="question-div">
           {detalhes.map((answer) => (
             <button 
               type="button" 
@@ -102,9 +108,6 @@ class QuestionBody extends React.Component {
             </button>))
           }
         </div>
-        <button type="button" 
-        onClick={() => this.setState({ index: this.state.index + 1 })}>
-          Proxima pergunta</button>
       </div>
     )
   }
