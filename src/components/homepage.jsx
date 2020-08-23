@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchQuestions } from '../actions/actionsFetchPerguntas';
-import QuestionBody from '../components/QuestionBody.jsx'
-import JogoFeedbackHeader from './JogoFeedbackHeader';
+import { Link } from 'react-router-dom'
 
 
-class JogoBody extends React.Component {
+
+class homepage extends React.Component {
   componentDidMount() {
     const { fetchData } = this.props;
     fetchData();
@@ -14,9 +14,8 @@ class JogoBody extends React.Component {
   render() {
     return(
       <div>
-        <h1>Pergunta</h1>
-{/*         <JogoFeedbackHeader /> */}
-        <QuestionBody />
+        <h1>home</h1>
+        <Link to="/gamepage" > game </Link>
       </div>
     )
   }
@@ -26,5 +25,5 @@ const mapDispatchToProps = (dispatch) => ({
   fetchData: () => dispatch(fetchQuestions()),
 });
 
-//export default JogoBody
-export default connect(null, mapDispatchToProps)(JogoBody);
+
+export default connect(null, mapDispatchToProps)(homepage);

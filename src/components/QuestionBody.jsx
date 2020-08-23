@@ -1,16 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import './QuestionBody.css'
 
 
 class QuestionBody extends React.Component {
    constructor(props){
     super(props);
     this.state = {
-      question: [],
-      index: 0
+      index: 1
     }
     this.shuffleAnswers = this.shuffleAnswers.bind(this)
-//    this.questionBody = this.questionBody.bind(this)
+    this.questionBody = this.questionBody.bind(this)
   }
 
   // a funcao shuffleArray é baseada no metodo Durstenfeld shuffle, encontrado no stackoverflow (https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
@@ -46,28 +46,42 @@ class QuestionBody extends React.Component {
   }
 
   selectedAnswer() {
-    document.querySelectorAll(".answers-div").forEach(button => button.setAttribute("disabled", ""));
+    document.querySelectorAll(".answers")
+    .forEach(button => { 
+      button.setAttribute("disabled", "")
+      if (button.getAttribute('value') === "CorrectAnswer") {
+        button.setAttribute("class", "correctAnswer")
+      } else { button.setAttribute("class", "wrongAnswer") }
+    });
   }
   
-  componentDidUpdate() {
-  function questionBody(pergunta) {
+  nextQuestion(){
+    this.setState({
+      index: this.state.index + 1
+    })
+  }
+  questionBody(pergunta) {
     const { correct_answer, incorrect_answers } = pergunta;
     const detalhes = [
       {
         resposta: correct_answer,
         dataTestid: 'correct-answer',
+        value: 'CorrectAnswer'
       },
       {
         resposta: incorrect_answers[0],
         dataTestid: 'wrong-answer-0',
+        value: 'WrongAnswer'
       },
       {
         resposta: incorrect_answers[1],
         dataTestid: 'wrong-answer-1',
+        value: 'WrongAnswer'
       },
       {
         resposta: incorrect_answers[2],
         dataTestid: 'wrong-answer-2',
+        value: 'WrongAnswer'
       },
     ];
     this.shuffleAnswers(detalhes)
@@ -81,41 +95,32 @@ class QuestionBody extends React.Component {
               type="button" 
               data-testid={`${answer.dataTestid}`}
               onClick={() => this.selectedAnswer()}
-              className="answers-div"
+              className="answers"
+              value={answer.value}
             >
               {answer.resposta}
             </button>))
           }
         </div>
+        <button type="button" 
+        onClick={() => this.setState({ index: this.state.index + 1 })}>
+          Proxima pergunta</button>
       </div>
     )
   }
-  return questionBody(pergunta)
-}
-
-  /* componentDidMount() {
-    const { perguntas } = this.props
-    this.setState({ question: perguntas})
-  } */
-
-  setando() {
-    const { perguntas } = this.props
-    this.setState({ question: perguntas})
-  }
 
   render() {
+    const { index } = this.state
     const { perguntas } = this.props
-   /*  const questions = perguntas.map(pergunta => [pergunta])
-    console.log(questions) */
-    /* const { index } = this.state
-    {this.questionBody(perguntas)}
-    {for (let pergunta = 0; pergunta === index;  pergunta++) {
-      this.questionBody
-    }} */
     return (
       <div>
+        Primeira
         {console.log(perguntas)}
-       {questionBody(perguntas[0])}
+        {perguntas.map((pergunta) =>  { 
+          if  (perguntas.indexOf(pergunta) === index) {
+            return this.questionBody(pergunta)
+          }})}
+        
       </div>
     )
   }
