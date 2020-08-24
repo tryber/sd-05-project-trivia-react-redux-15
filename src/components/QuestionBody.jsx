@@ -34,8 +34,15 @@ class QuestionBody extends React.Component {
         button.setAttribute("class", "correctAnswer")
       } else { button.setAttribute("class", "wrongAnswer") }
     });
+    const nextButton = document.createElement("button")
+    nextButton.setAttribute("data-testid", "btn-next")
+    nextButton.setAttribute("type", "button")
+    nextButton.innerHTML = "Próxima"
+    nextButton.addEventListener("click", () => this.setState({ index: this.state.index + 1 }))
+    document.getElementById("question-body").appendChild(nextButton)
+
   }
-  
+
   questionBody(pergunta) {
     const { correct_answer, incorrect_answers } = pergunta;
     const detalhes = [
@@ -62,7 +69,7 @@ class QuestionBody extends React.Component {
     ];
     this.shuffleAnswers(detalhes)
     return (
-      <div>
+      <div id="question-body">
         <h2 data-testid="question-category">Categoria: {pergunta.category}</h2> 
         <h2 data-testid="question-text">{pergunta.question}</h2>
         <div>
@@ -78,9 +85,6 @@ class QuestionBody extends React.Component {
             </button>))
           }
         </div>
-        <button type="button" 
-        onClick={() => this.setState({ index: this.state.index + 1 })}>
-          Proxima pergunta</button>
       </div>
     )
   }
