@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CustomInput from './CustomInput';
 import loginRequirements from '../services/loginRequirements';
-
-
 class FormLogin extends React.Component {
   constructor(props) {
     super(props);
@@ -12,10 +10,8 @@ class FormLogin extends React.Component {
       Email: '',
       Disabled: true,
     };
-    this.inputs = this.inputs.bind(this);
     this.stateUpdater = this.stateUpdater.bind(this);
   }
-
   stateUpdater({ target }) {
     const { name, value } = target;
     const { Nome, Email } = this.state;
@@ -24,7 +20,6 @@ class FormLogin extends React.Component {
       this.setState({ Disabled: false });
     }
   }
-
   render() {
     return (
       <div>
@@ -32,7 +27,14 @@ class FormLogin extends React.Component {
         <form>
           {
             loginRequirements.map((inputData) => (
-              <CustomInput inputData={inputData} key={inputData.name} />
+              <CustomInput
+                name={inputData.name}
+                type={inputData.type}
+                dataTestId={inputData.dataTestId}
+                value={this.state[inputData.name]}
+                key={inputData.name}
+                onChange={this.stateUpdater}
+              />
           ))
           }
         </form>
@@ -45,5 +47,4 @@ class FormLogin extends React.Component {
     );
   }
 }
-
 export default FormLogin;

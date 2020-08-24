@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class CustomInput extends React.Component {
   render() {
-    const { name, dataTestId, value, type, onChange } = this.props.inputData;
+    const { name, dataTestId, value, type, onChange } = this.props;
     return (
       <input
         type={type}
@@ -17,7 +17,6 @@ class CustomInput extends React.Component {
     );
   }
 }
-
 CustomInput.propTypes = {
   inputData: PropTypes.shape({
     name: PropTypes.string,

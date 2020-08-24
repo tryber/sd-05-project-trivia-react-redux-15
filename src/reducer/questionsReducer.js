@@ -4,10 +4,13 @@ import {
   RECEVEID_QUESTIONS_FAIL,
 } from '../actions/actionsFetchPerguntas';
 
+import { SET_CRONOMETRO } from '../actions/actionCronometro'
+
 const initialState = {
   isFetching: false,
   data: [],
   error: '',
+  tempo: 0,
 };
 
 const questionsReducer = (state = initialState, action) => {
@@ -18,6 +21,8 @@ const questionsReducer = (state = initialState, action) => {
       return { ...state, data: [...action.data.results], isFetching: false };
     case RECEVEID_QUESTIONS_FAIL:
       return { ...state, error: action.error, isFetching: false };
+    case SET_CRONOMETRO:
+      return {...state, tempo: action.tempo };
     default:
       return state;
   }
