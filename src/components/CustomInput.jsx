@@ -17,7 +17,6 @@ class CustomInput extends React.Component {
     );
   }
 }
-
 CustomInput.propTypes = {
   name: PropTypes.string,
   dataTestId: PropTypes.string,

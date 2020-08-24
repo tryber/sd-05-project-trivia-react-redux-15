@@ -6,7 +6,6 @@ import CustomInput from './CustomInput';
 import loginRequirements from '../services/loginRequirements';
 import { tokenFetcher } from '../actions/actionsFetchToken';
 
-
 class FormLogin extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +16,6 @@ class FormLogin extends React.Component {
     };
     this.stateUpdater = this.stateUpdater.bind(this);
   }
-
   stateUpdater({ target }) {
     const { name, value } = target;
     const { Nome, Email } = this.state;
@@ -26,7 +24,6 @@ class FormLogin extends React.Component {
       this.setState({ Disabled: false });
     }
   }
-
   render() {
     return (
       <div>

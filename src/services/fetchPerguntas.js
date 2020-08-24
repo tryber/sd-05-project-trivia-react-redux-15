@@ -1,6 +1,6 @@
 
 // const token = localStorage.getItem('token')
-const APIurl = `https://opentdb.com/api.php?amount=5&token=c696320abbe2d053c41bf48bdd7e03bd862d99446094d417a362ca0aa94a8b36`
+const APIurl = `https://opentdb.com/api.php?amount=5&token=533bc1c2853db93f2aec28599ad24b29ffc50085c9a50a3a4fb4b6834ec68567`
 
 const fetchAPIperguntas = () => (
     fetch(APIurl)
