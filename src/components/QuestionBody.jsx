@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './QuestionBody.css'
+//import Cronometro from './Cronometro';
 
 
 class QuestionBody extends React.Component {
    constructor(props){
     super(props);
     this.state = {
-      index: 1
+      index: 0,
+      tempo: 30,
     }
     this.shuffleAnswers = this.shuffleAnswers.bind(this)
     this.questionBody = this.questionBody.bind(this)
@@ -22,15 +24,6 @@ class QuestionBody extends React.Component {
       array2[novoIndex] = temp;
     });
     return array2; 
-    /* function shuffleArray(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        let temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-      }
-    }
-    return shuffleArray(array) */
   }
 
   selectedAnswer() {
@@ -43,11 +36,6 @@ class QuestionBody extends React.Component {
     });
   }
   
-  nextQuestion(){
-    this.setState({
-      index: this.state.index + 1
-    })
-  }
   questionBody(pergunta) {
     const { correct_answer, incorrect_answers } = pergunta;
     const detalhes = [
@@ -98,10 +86,13 @@ class QuestionBody extends React.Component {
   }
 
   render() {
-    const { index } = this.state
+    const { index, tempo } = this.state
     const { perguntas } = this.props
     return (
       <div>
+        <div>
+          <h1>Tempo: {tempo}</h1>
+        </div>
         Primeira
         {console.log(perguntas)}
         {perguntas.map((pergunta) =>  { 
@@ -112,7 +103,15 @@ class QuestionBody extends React.Component {
       </div>
     )
   }
+  componentDidMount() {
+    this.intervalo = setInterval(() => {
+        if (this.state.tempo !== 0) {
+         
+      this.setState( prevState => ({ tempo: prevState.tempo - 1 }))}
+    }, 1000)
+  }
 }
+
 
 const mapStateToProps = (state) => ({
   perguntas: state.questionsReducer.data,
