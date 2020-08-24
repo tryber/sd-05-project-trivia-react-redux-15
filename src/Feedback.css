@@ -1,9 +1,10 @@
-* {
+body {
   background-color: #282c34;
   margin: 30px;
 }
 
 /* ---------------------------------------------- */
+
 /* Telinha do placar geral */
 .placar {
   align-items: center;
@@ -22,6 +23,7 @@
 }
 
 /* ---------------------------------------------- */
+
 /* Telinha da quantidade de acertos */
 .acertos {
   background-color: rgb(205, 221, 255);
@@ -40,18 +42,18 @@
 }
 
 .podia-ser-melhor {
-  color: #fff;
+  color: white;
 }
 
 .mandou-bem {
-  color: #fff;
+  color: white;
 }
 
 /* Botões: Jogar Novamente e Ver Ranking
   ref: https://edrodrigues.com.br/blog/20-incriveis-botoes-animados-de-css-puro/ */
 
 .btn-two {
-  color: #fff;
+  color: white;
   position: relative;
   transition: all 0.5s;
 }
@@ -67,7 +69,7 @@
 .btn-two:before {
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  content: "";
+  content: '';
   height: 100%;
   left: 0;
   position: absolute;
@@ -80,7 +82,7 @@
 .btn-two:after {
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  content: "";
+  content: '';
   height: 100%;
   left: 0;
   position: absolute;
@@ -99,4 +101,5 @@
   background-color: rgba(255, 255, 255, 0);
   transform: rotate(45deg);
 }
+
 /* ---------------------------------------------- */
