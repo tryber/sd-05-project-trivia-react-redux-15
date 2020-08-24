@@ -12,9 +12,8 @@ class QuestionBody extends React.Component {
     this.shuffleAnswers = this.shuffleAnswers.bind(this)
     this.questionBody = this.questionBody.bind(this)
   }
-
-  // a funcao shuffleArray é baseada no metodo Durstenfeld shuffle, encontrado no stackoverflow (https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
-  /* function rrrrandom(array) {
+  
+  shuffleAnswers(array) {
     const array2 = array;
     array2.forEach((item, index) => {
       const novoIndex = Math.floor(Math.random() * (index + 1));
@@ -22,19 +21,8 @@ class QuestionBody extends React.Component {
       array2[index] = array2[novoIndex];
       array2[novoIndex] = temp;
     });
-    return array2;
-  } */
-  
-  shuffleAnswers(array) {
-/*     const array2 = array;
-    array2.forEach((item, index) => {
-      const novoIndex = Math.floor(Math.random() * (index + 1));
-      const temp = item;
-      array2[index] = array2[novoIndex];
-      array2[novoIndex] = temp;
-    });
-    return array2; */
-    function shuffleArray(array) {
+    return array2; 
+    /* function shuffleArray(array) {
       for (let i = array.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
         let temp = array[i];
@@ -42,7 +30,7 @@ class QuestionBody extends React.Component {
         array[j] = temp;
       }
     }
-    return shuffleArray(array)
+    return shuffleArray(array) */
   }
 
   selectedAnswer() {
