@@ -46,7 +46,9 @@ class FormLogin extends React.Component {
           }
         </form>
         <Link to="gamepage">
-          <button data-testid="btn-play" disabled={this.state.Disabled} onClick={this.props.onClick} >
+          <button data-testid="btn-play"
+          disabled={this.state.Disabled}
+          onClick={this.props.onClick} >
             Jogar!!
           </button>
         </Link>
@@ -61,6 +63,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 FormLogin.propTypes = {
   onClick: PropTypes.func,
-}.inRequired
+}.isRequired;
 
 export default connect(null, mapDispatchToProps)(FormLogin);

@@ -24,5 +24,6 @@ CustomInput.propTypes = {
   value: PropTypes.string,
   type: PropTypes.string,
   onChange: PropTypes.func,
-}.isRequired
+}.isRequired;
+
 export default CustomInput;
