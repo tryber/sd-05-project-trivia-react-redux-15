@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './QuestionBody.css'
+import Cronometro from './Cronometro';
 
 
 class QuestionBody extends React.Component {
    constructor(props){
     super(props);
     this.state = {
-      index: 1
+      index: 0,
+//      tempo: 30,
     }
     this.shuffleAnswers = this.shuffleAnswers.bind(this)
     this.questionBody = this.questionBody.bind(this)
@@ -61,11 +63,12 @@ class QuestionBody extends React.Component {
     document.getElementById("question-div").appendChild(nextButton)
   }
   
-  nextQuestion(){
+  /* nextQuestion(){
     this.setState({
       index: this.state.index + 1
     })
-  }
+  } */
+
   questionBody(pergunta) {
     const { correct_answer, incorrect_answers } = pergunta;
     const detalhes = [
@@ -117,7 +120,9 @@ class QuestionBody extends React.Component {
     const { perguntas } = this.props
     return (
       <div>
-        Primeira
+        <div>
+   
+        </div>
         {console.log(perguntas)}
         {perguntas.map((pergunta) =>  { 
           if  (perguntas.indexOf(pergunta) === index) {
@@ -127,10 +132,21 @@ class QuestionBody extends React.Component {
       </div>
     )
   }
+
+  /* componentDidMount() {
+    this.intervalo = setInterval(() => {
+      this.setState({ tempo: this.state.tempo - 1 })
+    }, 1000)
+  }
+
+  componentWillMount () {
+    clearInterval(this.intervalo)
+  } */
 }
 
 const mapStateToProps = (state) => ({
   perguntas: state.questionsReducer.data,
+  tmepo: state.questionsReducer.tempo,
 })
 
 export default connect(mapStateToProps)(QuestionBody)
