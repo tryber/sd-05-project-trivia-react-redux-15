@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import CustomInput from './CustomInput';
 import loginRequirements from '../services/loginRequirements';
 import { tokenFetcher } from '../actions/actionsFetchToken';
@@ -58,4 +59,8 @@ const mapDispatchToProps = (dispatch) => ({
   onClick: dispatch(tokenFetcher()),
 });
 
-export default connect(null, mapDispatchToProps) (FormLogin);
+FormLogin.propTypes = {
+  onClick: PropTypes.func,
+}.inRequired
+
+export default connect(null, mapDispatchToProps)(FormLogin);

@@ -19,12 +19,10 @@ class CustomInput extends React.Component {
 }
 
 CustomInput.propTypes = {
-  inputData: PropTypes.shape({
-    name: PropTypes.string,
-    dataTestId: PropTypes.string,
-    value: PropTypes.string,
-    type: PropTypes.string,
-    onChange: PropTypes.func,
-  }).isRequired,
-};
+  name: PropTypes.string,
+  dataTestId: PropTypes.string,
+  value: PropTypes.string,
+  type: PropTypes.string,
+  onChange: PropTypes.func,
+}.isRequired
 export default CustomInput;
