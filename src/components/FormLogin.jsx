@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import CustomInput from './CustomInput';
 import loginRequirements from '../services/loginRequirements';
+import { tokenFetcher } from '../actions/actionsFetchToken';
+
 class FormLogin extends React.Component {
   constructor(props) {
     super(props);
@@ -28,18 +32,20 @@ class FormLogin extends React.Component {
           {
             loginRequirements.map((inputData) => (
               <CustomInput
+                key={inputData.name}
                 name={inputData.name}
+                value={this.state[inputData.name]}
                 type={inputData.type}
                 dataTestId={inputData.dataTestId}
-                value={this.state[inputData.name]}
-                key={inputData.name}
                 onChange={this.stateUpdater}
               />
           ))
           }
         </form>
         <Link to="gamepage">
-          <button data-testid="btn-play" disabled={this.state.Disabled} >
+          <button data-testid="btn-play"
+          disabled={this.state.Disabled}
+          onClick={this.props.onClick} >
             Jogar!!
           </button>
         </Link>
@@ -47,4 +53,13 @@ class FormLogin extends React.Component {
     );
   }
 }
-export default FormLogin;
+
+const mapDispatchToProps = (dispatch) => ({
+  onClick: dispatch(tokenFetcher()),
+});
+
+FormLogin.propTypes = {
+  onClick: PropTypes.func,
+}.isRequired;
+
+export default connect(null, mapDispatchToProps)(FormLogin);

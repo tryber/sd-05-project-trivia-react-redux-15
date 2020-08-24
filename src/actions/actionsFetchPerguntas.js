@@ -9,6 +9,7 @@ function requestQuestions() {
 }
 
 function receveidQuestionsSuccess(data) {
+  localStorage.setItem('token', data);
   return { type: RECEVEID_QUESTIONS_SUCCESS, data }
 }
 
