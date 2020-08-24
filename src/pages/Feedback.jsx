@@ -2,26 +2,43 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import { connect } from 'react-redux';
 // import propTypes from 'prop-types';
+import '../Feedback.css';
+import dogTriste from '../dog-triste.gif';
+import parabens from '../parabens.gif';
 
 class Feedback extends React.Component {
   render() {
     // const { acertos, placar } = this.props;
-    const acertos = 0; // apagar
+    const acertos = 4; // apagar
     return (
       <div>
         {/* importar o header */}
-        <div data-testid="feedback-total-score">PLACAR FINAL: {/* {placar} */}</div>
-        <div data-testid="feedback-total-question">Você acertou: {/* {acertos} */}</div>
-        <div data-testid="feedback-text">
-          {acertos < 3 ? <h2>Podia ser melhor...</h2> : <h2>Mandou bem!</h2>}
+        <div className="placar" data-testid="feedback-total-score">
+          PLACAR FINAL: <br>{/* {placar} */}</br>
+        </div>
+        <div className="acertos" data-testid="feedback-total-question">
+          VOCÊ ACERTOU: <br>{/* {acertos} */}</br>
+        </div>
+        <div className="texto-resultado" data-testid="feedback-text">
+          {acertos < 3 ?
+            <div className="podia-ser-melhor">
+              <h2>Podia ser melhor...</h2>
+              <img src={dogTriste} alt="cachorro-triste" />
+            </div>
+            :
+            <div className="mandou-bem">
+              <h2>Mandou bem!</h2>
+              <img src={parabens} alt="parabens" />
+            </div>
+          }
         </div>
         <Link to="/home">
-          <button data-testid="btn-play-again">
+          <button className="btn-two" data-testid="btn-play-again">
             Jogar Novamente
           </button>
         </Link>
         <Link to="/ranking">
-          <button data-testid="btn-ranking">
+          <button className="btn-two" data-testid="btn-ranking">
             Ver Ranking
           </button>
         </Link>

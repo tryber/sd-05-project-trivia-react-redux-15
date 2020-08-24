@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './trivia.png';
 import './App.css';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 export default function App() {
   return (
