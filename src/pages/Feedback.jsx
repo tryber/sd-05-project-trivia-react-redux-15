@@ -33,14 +33,10 @@ class Feedback extends React.Component {
           }
         </div>
         <Link to="/home">
-          <button className="btn-two" data-testid="btn-play-again">
-            Jogar Novamente
-          </button>
+          <button className="btn-two" data-testid="btn-play-again">Jogar Novamente</button>
         </Link>
         <Link to="/ranking">
-          <button className="btn-two" data-testid="btn-ranking">
-            Ver Ranking
-          </button>
+          <button className="btn-two" data-testid="btn-ranking">Ver Ranking</button>
         </Link>
       </div>
     );
