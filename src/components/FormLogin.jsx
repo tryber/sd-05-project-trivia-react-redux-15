@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CustomInput from './CustomInput';
 import loginRequirements from '../services/loginRequirements';
 
@@ -35,9 +36,11 @@ class FormLogin extends React.Component {
           ))
           }
         </form>
-        <button data-testid="btn-play" disabled={this.state.Disabled} >
-          Jogar!!
-        </button>
+        <Link to="gamepage">
+          <button data-testid="btn-play" disabled={this.state.Disabled} >
+            Jogar!!
+          </button>
+        </Link>
       </div>
     );
   }
