@@ -9,6 +9,7 @@ function requestingToken() {
 };
 
 function foundToken(token) {
+  localStorage.setItem('token', token);
   return { type: FOUND_TOKEN, token };
 };
 

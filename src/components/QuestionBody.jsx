@@ -97,12 +97,15 @@ class QuestionBody extends React.Component {
         <div>
           <h1>Tempo: {tempo}</h1>
         </div>
+        <div>
         Primeira
         {console.log(perguntas)}
         {perguntas.map((pergunta) =>  { 
           if  (perguntas.indexOf(pergunta) === index) {
             return this.questionBody(pergunta)
           }})}
+
+        </div>
         
       </div>
     )

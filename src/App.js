@@ -1,8 +1,10 @@
 import React from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
-import JogoBody from './components/JogoBody';
-import homepage from './components/homepage'
+import Home from './pages/Home'
+import TelaDoJogo from './pages/TelaDoJogo';
+
+
 function App() {
   return (
     <div className="App">
