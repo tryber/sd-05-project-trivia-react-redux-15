@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import CustomInput from './CustomInput';
 import loginRequirements from '../services/loginRequirements';
+import { tokenFetcher } from '../actions/actionsFetchToken';
 
 
 class FormLogin extends React.Component {
@@ -12,7 +14,6 @@ class FormLogin extends React.Component {
       Email: '',
       Disabled: true,
     };
-    this.inputs = this.inputs.bind(this);
     this.stateUpdater = this.stateUpdater.bind(this);
   }
 
@@ -32,12 +33,19 @@ class FormLogin extends React.Component {
         <form>
           {
             loginRequirements.map((inputData) => (
-              <CustomInput inputData={inputData} key={inputData.name} />
+              <CustomInput
+                key={inputData.name}
+                name={inputData.name}
+                value={this.state[inputData.name]}
+                type={inputData.type}
+                dataTestId={inputData.dataTestId}
+                onChange={this.stateUpdater}
+              />
           ))
           }
         </form>
         <Link to="gamepage">
-          <button data-testid="btn-play" disabled={this.state.Disabled} >
+          <button data-testid="btn-play" disabled={this.state.Disabled} onClick={this.props.onClick} >
             Jogar!!
           </button>
         </Link>
@@ -46,4 +54,8 @@ class FormLogin extends React.Component {
   }
 }
 
-export default FormLogin;
+const mapDispatchToProps = (dispatch) => ({
+  onClick: dispatch(tokenFetcher()),
+});
+
+export default connect(null, mapDispatchToProps) (FormLogin);
