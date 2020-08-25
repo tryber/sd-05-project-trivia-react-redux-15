@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchQuestions } from '../actions/actionsFetchPerguntas';
 import QuestionBody from '../components/QuestionBody.jsx';
-// import JogoFeedbackHeader from './JogoFeedbackHeader';
+import JogoFeedbackHeader from './JogoFeedbackHeader';
 
 
 class JogoBody extends React.Component {
@@ -16,7 +16,7 @@ class JogoBody extends React.Component {
     return (
       <div>
         <h1>Pergunta</h1>
-        {/* <JogoFeedbackHeader /> */}
+        <JogoFeedbackHeader />
         <QuestionBody />
       </div>
     );

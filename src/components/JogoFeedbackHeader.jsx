@@ -1,12 +1,38 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+// import { connect } from 'react-redux';
+import CryptoJS from 'crypto-js';
 
 class JogoFeedbackHeader extends React.Component {
-  render() {
-    const { image, name, score } = this.props;
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      image: '',
+      score: '',
+    };
+    this.getLocalStorage = this.getLocalStorage.bind(this);
+  }
+
+  componentWillMount() {
+    this.getLocalStorage();
+  }
+
+  getLocalStorage() {
+    const player = JSON.parse(localStorage.getItem('state'));
+    const hash = CryptoJS.MD5(player.gravatarEmail).toString();
     return (
-      <div>
+      this.setState({
+        name: player.name,
+        image: `https://www.gravatar.com/avatar/${hash}`,
+        score: player.score,
+      })
+    );
+  }
+
+  render() {
+    const { name, image, score } = this.state;
+    return (
+      <header>
         <img
           src={image}
           alt="player"
@@ -14,14 +40,14 @@ class JogoFeedbackHeader extends React.Component {
         />
         <h1 data-testid="header-player-name">{name}</h1>
         <h1 data-testid="header-score">Pontuação: {score}</h1>
-      </div>
+      </header>
     );
   }
 }
 
 // Dependendo do formato do state da store, deve-se especificar o reducer na funcao mapStateToProps
 
-const mapStateToProps = (state) => ({
+/* const mapStateToProps = (state) => ({
   image: state.reducer.player.image,
   name: state.reducer.player.name,
   score: state.reducer.player.score,
@@ -33,4 +59,6 @@ JogoFeedbackHeader.propTypes = {
   score: PropTypes.string.isRequired,
 };
 
-export default connect(mapStateToProps)(JogoFeedbackHeader);
+export default connect(mapStateToProps)(JogoFeedbackHeader); */
+
+export default JogoFeedbackHeader;
