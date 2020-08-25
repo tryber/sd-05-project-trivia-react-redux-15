@@ -6,15 +6,15 @@ export const TOKEN_NOT_FOUND = 'TOKEN_NOT_FOUND';
 
 function requestingToken() {
   return { type: REQUESTING_TOKEN };
-};
+}
 
 function foundToken(token) {
   localStorage.setItem('token', token);
   return { type: FOUND_TOKEN, token };
-};
+}
 
 function tokenNotFound(error) {
-  return { type: TOKEN_NOT_FOUND, error }
+  return { type: TOKEN_NOT_FOUND, error };
 }
 
 export function tokenFetcher() {
@@ -24,6 +24,6 @@ export function tokenFetcher() {
       .then((response) => {
         if (response.response_code === 0) dispatch(foundToken(response.token));
         if (response.response_code !== 0) dispatch(tokenNotFound(response.message));
-      })
-  }
-};
+      });
+  };
+}

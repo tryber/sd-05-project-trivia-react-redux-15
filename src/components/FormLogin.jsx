@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import CustomInput from './CustomInput';
 import loginRequirements from '../services/loginRequirements';
 import { tokenFetcher } from '../actions/actionsFetchToken';
-
 class FormLogin extends React.Component {
   constructor(props) {
     super(props);
@@ -15,14 +14,20 @@ class FormLogin extends React.Component {
       Disabled: true,
     };
     this.stateUpdater = this.stateUpdater.bind(this);
+    this.disableCheck = this.disableCheck.bind(this);
   }
-  stateUpdater({ target }) {
-    const { name, value } = target;
+  disableCheck() {
     const { Nome, Email } = this.state;
-    this.setState(() => ({ [name]: value }));
     if (Nome !== '' && Email !== '') {
-      this.setState({ Disabled: false });
+      this.setState(() => ({ Disabled: false }));
+    } else {
+      this.setState(() => ({ Disabled: true }));
     }
+  }
+  async stateUpdater({ target }) {
+    const { name, value } = target;
+    await this.setState(() => ({ [name]: value }));
+    this.disableCheck();
   }
   render() {
     return (
@@ -53,13 +58,10 @@ class FormLogin extends React.Component {
     );
   }
 }
-
 const mapDispatchToProps = (dispatch) => ({
   onClick: dispatch(tokenFetcher()),
 });
-
 FormLogin.propTypes = {
   onClick: PropTypes.func,
 }.isRequired;
-
 export default connect(null, mapDispatchToProps)(FormLogin);

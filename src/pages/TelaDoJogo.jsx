@@ -7,7 +7,7 @@ class TelaDoJogo extends React.Component {
       <div>
         <JogoBody />
       </div>
-    )
+    );
   }
 }
 
