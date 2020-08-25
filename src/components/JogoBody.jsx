@@ -3,28 +3,38 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchQuestions } from '../actions/actionsFetchPerguntas';
 import QuestionBody from '../components/QuestionBody.jsx';
-// import JogoFeedbackHeader from './JogoFeedbackHeader';
+import JogoFeedbackHeader from './JogoFeedbackHeader';
 
 
 class JogoBody extends React.Component {
   componentDidMount() {
-    const { fetchData } = this.props;
-    fetchData();
+    const { fetchData, token } = this.props;
+    fetchData(token);
   }
 
   render() {
+    const { isFetching, perguntas } = this.props;
+    if (isFetching === true) {
+      return (<div>Loading...</div>);
+    }
     return (
       <div>
         <h1>Pergunta</h1>
-        {/* <JogoFeedbackHeader /> */}
-        <QuestionBody />
+        <JogoFeedbackHeader />
+        <QuestionBody perguntas={perguntas} />
       </div>
     );
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchData: () => dispatch(fetchQuestions()),
+  fetchData: (token) => dispatch(fetchQuestions(token)),
+});
+
+const mapStateToProps = (state) => ({
+  isFetching: state.questionsReducer.isFetching,
+  perguntas: state.questionsReducer.data,
+  token: state.tokenReducer.token,
 });
 
 JogoBody.propTypes = {
@@ -32,4 +42,4 @@ JogoBody.propTypes = {
 }.isRequired;
 
 // export default JogoBody
-export default connect(null, mapDispatchToProps)(JogoBody);
+export default connect(mapStateToProps, mapDispatchToProps)(JogoBody);

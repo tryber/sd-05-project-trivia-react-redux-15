@@ -5,3 +5,7 @@
 .wrongAnswer {
   border: 3px solid red;
 }
+
+.div-question{
+  margin: 30px;
+}

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import questionsReducer from './questionsReducer';
-import TokenReducer from './tokenReducer';
+import tokenReducer from './tokenReducer';
 
 const rootReducer = combineReducers({
   questionsReducer,
-  TokenReducer,
+  tokenReducer,
 });
 
 export default rootReducer;

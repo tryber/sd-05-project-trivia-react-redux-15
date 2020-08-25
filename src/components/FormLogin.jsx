@@ -16,7 +16,27 @@ class FormLogin extends React.Component {
     };
     this.stateUpdater = this.stateUpdater.bind(this);
     this.disableCheck = this.disableCheck.bind(this);
+    this.setLocalStorage = this.setLocalStorage.bind(this);
   }
+  componentDidMount() {
+    const { fetchToken } = this.props;
+    fetchToken();
+  }
+
+  setLocalStorage() {
+    const { Nome, Email } = this.state;
+    const player = {
+      name: Nome,
+      assertions: 0,
+      score: 0,
+      gravatarEmail: Email,
+    };
+    document.getElementById('play-button').addEventListener(
+      'click',
+      localStorage.setItem('state', JSON.stringify(player)),
+    );
+  }
+
   disableCheck() {
     const { Nome, Email } = this.state;
     if (Nome !== '' && Email !== '') {
@@ -52,7 +72,8 @@ class FormLogin extends React.Component {
           <button
             data-testid="btn-play"
             disabled={this.state.Disabled}
-            onClick={this.props.onClick}
+            onClick={this.setLocalStorage}
+            id="play-button"
           >
             Jogar!!
           </button>
@@ -62,9 +83,10 @@ class FormLogin extends React.Component {
   }
 }
 const mapDispatchToProps = (dispatch) => ({
-  onClick: dispatch(tokenFetcher()),
+  fetchToken: () => dispatch(tokenFetcher()),
 });
+
 FormLogin.propTypes = {
-  onClick: PropTypes.func,
+  fetchToken: PropTypes.func,
 }.isRequired;
 export default connect(null, mapDispatchToProps)(FormLogin);
