@@ -50,7 +50,7 @@ class QuestionBody extends React.Component {
     });
     return array2;
   } */
-  
+
 /* componentDidUpdate() {
   const { perguntas } = this.props
   perguntas.map((pergunta) => {
@@ -85,9 +85,8 @@ class QuestionBody extends React.Component {
       },
     ];
     this.shuffleAnswers(detalhes); */
-    
-    console.log(pergunta[this.state.index])
-    const question1 = pergunta[this.state.index]
+
+    const question1 = pergunta[this.state.index];
 
     return (
       <div id="question-body">

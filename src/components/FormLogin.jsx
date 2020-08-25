@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import CustomInput from './CustomInput';
 import loginRequirements from '../services/loginRequirements';
 import { tokenFetcher } from '../actions/actionsFetchToken';
+
 class FormLogin extends React.Component {
   constructor(props) {
     super(props);
@@ -48,9 +49,11 @@ class FormLogin extends React.Component {
           }
         </form>
         <Link to="gamepage">
-          <button data-testid="btn-play"
-          disabled={this.state.Disabled}
-          onClick={this.props.onClick} >
+          <button
+            data-testid="btn-play"
+            disabled={this.state.Disabled}
+            onClick={this.props.onClick}
+          >
             Jogar!!
           </button>
         </Link>
