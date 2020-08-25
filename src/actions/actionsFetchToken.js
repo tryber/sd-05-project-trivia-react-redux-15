@@ -21,9 +21,9 @@ export function tokenFetcher() {
   return (dispatch) => {
     dispatch(requestingToken());
     return fetchToken()
-      .then((response) => {
-        if (response.response_code === 0) dispatch(foundToken(response.token));
-        if (response.response_code !== 0) dispatch(tokenNotFound(response.message));
-      });
+      .then(
+        (response) => dispatch(foundToken(response.token)),
+        (error) => dispatch(tokenNotFound(error.message)),
+      );
   };
 }

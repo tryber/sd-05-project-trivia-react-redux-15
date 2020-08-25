@@ -18,9 +18,9 @@ class FormLogin extends React.Component {
     this.disableCheck = this.disableCheck.bind(this);
     this.setLocalStorage = this.setLocalStorage.bind(this);
   }
-
-  componentDidUpdate() {
-    this.setLocalStorage();
+  componentDidMount() {
+    const { fetchToken } = this.props;
+    fetchToken();
   }
 
   setLocalStorage() {
@@ -72,7 +72,7 @@ class FormLogin extends React.Component {
           <button
             data-testid="btn-play"
             disabled={this.state.Disabled}
-            onClick={this.props.onClick}
+            onClick={this.setLocalStorage}
             id="play-button"
           >
             Jogar!!
@@ -83,10 +83,10 @@ class FormLogin extends React.Component {
   }
 }
 const mapDispatchToProps = (dispatch) => ({
-  onClick: dispatch(tokenFetcher()),
+  fetchToken: () => dispatch(tokenFetcher()),
 });
 
 FormLogin.propTypes = {
-  onClick: PropTypes.func,
+  fetchToken: PropTypes.func,
 }.isRequired;
 export default connect(null, mapDispatchToProps)(FormLogin);

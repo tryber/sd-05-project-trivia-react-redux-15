@@ -18,7 +18,7 @@ const questionsReducer = (state = initialState, action) => {
     case REQUEST_QUESTIONS:
       return { ...state, isFetching: true };
     case RECEVEID_QUESTIONS_SUCCESS:
-      return { ...state, data: [action.embaralhadas], isFetching: false };
+      return { ...state, data: action.embaralhadas, isFetching: false };
     case RECEVEID_QUESTIONS_FAIL:
       return { ...state, error: action.error, isFetching: false };
     /* case SET_CRONOMETRO:

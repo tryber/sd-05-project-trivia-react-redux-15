@@ -12,6 +12,7 @@ function requestQuestions() {
 
 function receveidQuestionsSuccess(data) {
   const { results } = data;
+
   const embaralhadas = results.map((pergunta) => {
     const { correct_answer, incorrect_answers } = pergunta;
     const detalhes = [
@@ -44,10 +45,10 @@ function receveidQuestionsSuccess(data) {
 function receveidQuestionsFail(error) {
   return { type: RECEVEID_QUESTIONS_FAIL, error };
 }
-export function fetchQuestions() {
+export function fetchQuestions(token) {
   return (dispatch) => {
     dispatch(requestQuestions());
-    return fetchPerguntas()
+    return fetchPerguntas(token)
       .then(
         (data) => dispatch(receveidQuestionsSuccess(data)),
         (error) => dispatch(receveidQuestionsFail(error.message)),

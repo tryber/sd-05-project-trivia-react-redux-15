@@ -13,7 +13,7 @@ class JogoFeedbackHeader extends React.Component {
     this.getLocalStorage = this.getLocalStorage.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getLocalStorage();
   }
 
@@ -38,27 +38,11 @@ class JogoFeedbackHeader extends React.Component {
           alt="player"
           data-testid="header-profile-picture"
         />
-        <h1 data-testid="header-player-name">{name}</h1>
-        <h1 data-testid="header-score">Pontuação: {score}</h1>
+        <p data-testid="header-player-name">{name}</p>
+        <p data-testid="header-score">Pontuação: {score}</p>
       </header>
     );
   }
 }
-
-// Dependendo do formato do state da store, deve-se especificar o reducer na funcao mapStateToProps
-
-/* const mapStateToProps = (state) => ({
-  image: state.reducer.player.image,
-  name: state.reducer.player.name,
-  score: state.reducer.player.score,
-});
-
-JogoFeedbackHeader.propTypes = {
-  image: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  score: PropTypes.string.isRequired,
-};
-
-export default connect(mapStateToProps)(JogoFeedbackHeader); */
 
 export default JogoFeedbackHeader;
