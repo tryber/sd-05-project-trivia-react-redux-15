@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import { connect } from 'react-redux';
 // import propTypes from 'prop-types';
-import '../Feedback.css';
+import '../components/Feedback.css';
 import dogTriste from '../dog-triste.gif';
 import parabens from '../parabens.gif';
+import JogoFeedbackHeader from '../components/JogoFeedbackHeader';
 
 class Feedback extends React.Component {
   render() {
@@ -12,7 +13,7 @@ class Feedback extends React.Component {
     const acertos = 4; // apagar
     return (
       <div>
-        {/* importar o header */}
+        <JogoFeedbackHeader />
         <div className="placar" data-testid="feedback-total-score">
           PLACAR FINAL: <br>{/* {placar} */}</br>
         </div>
