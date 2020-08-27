@@ -1,0 +1,104 @@
+body {
+  background-color: #282c34;
+  margin: 30px;
+}
+
+/* ---------------------------------------------- */
+
+/* Telinha do placar geral */
+.placar {
+  align-items: center;
+  background-color: rgb(205, 221, 255);
+  border: 1px solid black;
+  box-shadow: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  font-family: Marker Felt, fantasy;
+  font-size: 2.5rem;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20rem;
+}
+
+/* ---------------------------------------------- */
+
+/* Telinha da quantidade de acertos */
+.acertos {
+  background-color: rgb(205, 221, 255);
+  border: 1px solid black;
+  box-shadow: 20px 20px;
+  font-family: Marker Felt, fantasy;
+  font-size: 2.5rem;
+  height: 100px;
+  margin: auto;
+  width: 20rem;
+}
+
+/* ---------------------------------------------- */
+.texto-resultado {
+  margin: 50px;
+}
+
+.podia-ser-melhor {
+  color: white;
+}
+
+.mandou-bem {
+  color: white;
+}
+
+/* Botões: Jogar Novamente e Ver Ranking
+  ref: https://edrodrigues.com.br/blog/20-incriveis-botoes-animados-de-css-puro/ */
+
+.btn-two {
+  color: white;
+  position: relative;
+  transition: all 0.5s;
+}
+
+.btn-two span {
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+}
+
+.btn-two:before {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: all 0.5s;
+  width: 100%;
+  z-index: 1;
+}
+
+.btn-two:after {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: all 0.5s;
+  width: 100%;
+  z-index: 1;
+}
+
+.btn-two:hover:before {
+  background-color: rgba(255, 255, 255, 0);
+  transform: rotate(-45deg);
+}
+
+.btn-two:hover:after {
+  background-color: rgba(255, 255, 255, 0);
+  transform: rotate(45deg);
+}
+
+/* ---------------------------------------------- */
