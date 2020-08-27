@@ -1,6 +1,7 @@
 import React from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import CryptoJS from 'crypto-js';
+import propTypes from 'prop-types';
 
 class JogoFeedbackHeader extends React.Component {
   constructor(props) {
@@ -19,18 +20,17 @@ class JogoFeedbackHeader extends React.Component {
 
   getLocalStorage() {
     const player = JSON.parse(localStorage.getItem('state'));
-    const hash = CryptoJS.MD5(player.gravatarEmail).toString();
+    const hash = CryptoJS.MD5(player.player.gravatarEmail).toString();
     return (
       this.setState({
-        name: player.name,
+        name: player.player.name,
         image: `https://www.gravatar.com/avatar/${hash}`,
-        score: player.score,
       })
     );
   }
 
   render() {
-    const { name, image, score } = this.state;
+    const { name, image } = this.state;
     return (
       <header>
         <img
@@ -39,10 +39,21 @@ class JogoFeedbackHeader extends React.Component {
           data-testid="header-profile-picture"
         />
         <p data-testid="header-player-name">{name}</p>
-        <p data-testid="header-score">Pontuação: {score}</p>
+        <div>
+          Pontuacao:
+        <p data-testid="header-score">{this.props.placar}</p>
+        </div>
       </header>
     );
   }
 }
 
-export default JogoFeedbackHeader;
+const mapStateToProps = (state) => ({
+  placar: state.questionsReducer.pontuacao,
+});
+
+JogoFeedbackHeader.propTypes = {
+  placar: propTypes.number,
+}.isRequired;
+
+export default connect(mapStateToProps)(JogoFeedbackHeader);

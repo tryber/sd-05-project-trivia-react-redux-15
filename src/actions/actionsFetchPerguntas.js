@@ -4,7 +4,18 @@ import shuffleAnswers from '../services/shuffler';
 export const REQUEST_QUESTIONS = 'REQUEST_QUESTIONS';
 export const RECEVEID_QUESTIONS_SUCCESS = 'REQUEST_QUESTIONS_SUCCESS';
 export const RECEVEID_QUESTIONS_FAIL = 'RECEVEID_QUESTIONS_FAIL';
+export const RECEVEID_GAME_INFO = 'RECEVEID_GAME_INFO';
 
+export function receveidGameInfo(nome, email, acertos, pontuacao) {
+  const stateInicial = { player: {
+    name: nome,
+    gravataEmail: email,
+    assertions: acertos,
+    score: pontuacao,
+  } };
+  localStorage.setItem('state', JSON.stringify(stateInicial));
+  return { type: RECEVEID_GAME_INFO, nome, email, acertos, pontuacao };
+}
 
 function requestQuestions() {
   return { type: REQUEST_QUESTIONS };

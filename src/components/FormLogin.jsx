@@ -6,6 +6,16 @@ import CustomInput from './CustomInput';
 import loginRequirements from '../services/loginRequirements';
 import { tokenFetcher } from '../actions/actionsFetchToken';
 
+function settingsButton() {
+  return (
+    <div>
+      <Link to="settings">
+        <button data-testid="btn-settings">Configuracoes</button>
+      </Link>
+    </div>
+  );
+}
+
 class FormLogin extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +28,7 @@ class FormLogin extends React.Component {
     this.disableCheck = this.disableCheck.bind(this);
     this.setLocalStorage = this.setLocalStorage.bind(this);
   }
+
   componentDidMount() {
     const { fetchToken } = this.props;
     fetchToken();
@@ -25,15 +36,15 @@ class FormLogin extends React.Component {
 
   setLocalStorage() {
     const { Nome, Email } = this.state;
-    const player = {
+    const stateInicial = { player: {
       name: Nome,
+      gravataEmail: Email,
       assertions: 0,
       score: 0,
-      gravatarEmail: Email,
-    };
+    } };
     document.getElementById('play-button').addEventListener(
       'click',
-      localStorage.setItem('state', JSON.stringify(player)),
+      localStorage.setItem('state', JSON.stringify(stateInicial)),
     );
   }
 
@@ -50,6 +61,7 @@ class FormLogin extends React.Component {
     await this.setState(() => ({ [name]: value }));
     this.disableCheck();
   }
+
   render() {
     return (
       <div>
@@ -78,10 +90,12 @@ class FormLogin extends React.Component {
             Jogar!!
           </button>
         </Link>
+        {settingsButton()}
       </div>
     );
   }
 }
+
 const mapDispatchToProps = (dispatch) => ({
   fetchToken: () => dispatch(tokenFetcher()),
 });
@@ -89,4 +103,5 @@ const mapDispatchToProps = (dispatch) => ({
 FormLogin.propTypes = {
   fetchToken: PropTypes.func,
 }.isRequired;
+
 export default connect(null, mapDispatchToProps)(FormLogin);
