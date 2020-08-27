@@ -1,38 +1,54 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { connect } from 'react-redux';
-// import propTypes from 'prop-types';
+import { connect } from 'react-redux';
+import propTypes from 'prop-types';
 import '../Feedback.css';
 import dogTriste from '../dog-triste.gif';
 import parabens from '../parabens.gif';
+import JogoFeedbackHeader from '../components/JogoFeedbackHeader';
 
 class Feedback extends React.Component {
-  render() {
-    // const { acertos, placar } = this.props;
-    const acertos = 4; // apagar
+  constructor(props) {
+    super(props);
+    this.placarFinal = this.placarFinal.bind(this);
+  }
+
+  placarFinal() {
+    const { acertos, placar } = this.props;
     return (
       <div>
-        {/* importar o header */}
+          <p>PLACAR FINAL:</p> 
         <div className="placar" data-testid="feedback-total-score">
-          PLACAR FINAL: <br>{/* {placar} */}</br>
+          {placar}
         </div>
+          <p>VOCÊ ACERTOU:</p> 
         <div className="acertos" data-testid="feedback-total-question">
-          VOCÊ ACERTOU: <br>{/* {acertos} */}</br>
+        {acertos}
         </div>
+      </div>
+    );
+  }
+
+  render() {
+    const { acertos } = this.props;
+    return (
+      <div>
+        <JogoFeedbackHeader />
+        {this.placarFinal()}
         <div className="texto-resultado" data-testid="feedback-text">
-          {acertos < 3 ?
-            <div className="podia-ser-melhor">
-              <h2>Podia ser melhor...</h2>
-              <img src={dogTriste} alt="cachorro-triste" />
-            </div>
-            :
+          {acertos >= 3 ?
             <div className="mandou-bem">
               <h2>Mandou bem!</h2>
               <img src={parabens} alt="parabens" />
             </div>
+            :
+            <div className="podia-ser-melhor">
+              <h2>Podia ser melhor...</h2>
+              <img src={dogTriste} alt="cachorro-triste" />
+            </div>
           }
         </div>
-        <Link to="/home">
+        <Link to="/">
           <button className="btn-two" data-testid="btn-play-again">Jogar Novamente</button>
         </Link>
         <Link to="/ranking">
@@ -43,16 +59,16 @@ class Feedback extends React.Component {
   }
 }
 
-// const mapStateToProps = (state) => ({
-//   acertos: state.reducerVirginia.assertions,
-//   placar: state.reducerVirginia.score,
-// })
+const mapStateToProps = (state) => ({
+  acertos: state.questionsReducer.acertos,
+  placar: state.questionsReducer.pontuacao,
+});
 
-// export default connect(null)(Feedback);
+export default connect(mapStateToProps)(Feedback);
 
-// Feedback.propTypes = {
-//   acertos: propTypes,
-//   placar: propTypes,
-// };
+Feedback.propTypes = {
+  acertos: propTypes.number,
+  placar: propTypes.number,
+}.isRequired;
 
-export default Feedback;
+// export default Feedback;

@@ -3,6 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
 import TelaDoJogo from './pages/TelaDoJogo';
+import Feedback from './pages/Feedback';
+import Settings from './pages/Settings';
 
 
 function App() {
@@ -12,6 +14,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/gamepage" component={TelaDoJogo} />
+          <Route path="/feedback" component={Feedback} />
+          <Route path="/settings" component={Settings} />
         </Switch>
       </header>
     </div>
