@@ -17,13 +17,13 @@ class Feedback extends React.Component {
     const { acertos, placar } = this.props;
     return (
       <div>
-          <p>PLACAR FINAL:</p> 
+        <p>PLACAR FINAL:</p>
         <div className="placar" data-testid="feedback-total-score">
           {placar}
         </div>
-          <p>VOCÊ ACERTOU:</p> 
+        <p>VOCÊ ACERTOU:</p>
         <div className="acertos" data-testid="feedback-total-question">
-        {acertos}
+          {acertos}
         </div>
       </div>
     );
