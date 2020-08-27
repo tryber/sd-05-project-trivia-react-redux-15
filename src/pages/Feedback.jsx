@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-import '../Feedback.css';
+import './Feedback.css';
 import dogTriste from '../dog-triste.gif';
 import parabens from '../parabens.gif';
 import JogoFeedbackHeader from '../components/JogoFeedbackHeader';
